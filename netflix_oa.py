@@ -67,7 +67,7 @@ def sol2(members, messages):
             org_dict[stats_dict[key]] = [key]
     
     for key in org_dict.keys():
-        for id in org_dict[key]:
+        for id in sorted(org_dict[key]):
             ret.append(f"[{id}] - [{stats_dict[id]}]")
                
     return ret
