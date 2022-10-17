@@ -126,10 +126,11 @@ def sol3(numbers):
     
     # if the half's are sorted in increasing order, that means a shift on a sorted array occured
     # return the distance between 0 and index of the min, i.e. the shift
+    # else return -1
     if sorted(h2) == h2 and sorted(h1) == h1:
         return numbers.index(min(numbers))
     else:
         return -1
 
 
-print(sol3([4, 3, 2, 1]))    
+print(sol3([3, 4, 5, 1, 2]))    
