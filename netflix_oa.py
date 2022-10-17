@@ -7,6 +7,9 @@ s = “abcdef”
 solution(s) = “afbecd”
 """
 
+
+
+
 def sol1(word):
     ret = ""
     for i in range(0, len(word)//2):
@@ -109,17 +112,24 @@ If we move the first 3 elements of the given array to the beginning to the end, 
 
 def sol3(numbers):
     
+    
+    # Split the array at the min, with the min being grouped with the elements suceeding it
     h1, h2 = numbers[0:numbers.index(min(numbers))], numbers[numbers.index(min(numbers)):]
 
+    
+    # if one of the arrays is empty, that means the min was at the beginning
+    # if everything after the min is not sorted, there is no shift possible
     if h1 is None or h2 is None:
         if sorted(h2) != h2 or sorted(h1) != h1:
             return -1        
-        
+    
+    
+    # if the half's are sorted in increasing order, that means a shift on a sorted array occured
+    # return the distance between 0 and index of the min, i.e. the shift
     if sorted(h2) == h2 and sorted(h1) == h1:
         return numbers.index(min(numbers))
+    else:
+        return -1
 
 
-print(sol3([3, 4, 1, 2]))    
-
-        
-    
+print(sol3([4, 3, 2, 1]))    
