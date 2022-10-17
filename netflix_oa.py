@@ -7,9 +7,6 @@ s = “abcdef”
 solution(s) = “afbecd”
 """
 
-
-
-
 def sol1(word):
     ret = ""
     for i in range(0, len(word)//2):
@@ -21,6 +18,13 @@ def sol1(word):
     return ret
 
 print(sol1("adc3def"))
+
+
+
+
+
+
+
 
 """
 Imagine there is a group chat with many users writing messages. The content of messages includes text and mentions of other users in the chat. Mentions in the group chat are formatted as strings starting with the @ character and followed by at least one id separated by commas. An id is formatted as a string starting with id and followed by a positive integer from 0  to 999
@@ -80,6 +84,19 @@ print(sol2(["id123", "id234", "id7", "id321"], ["Hey @id123,id321 review this PR
 "Hey @id7 nice approach! Great job! @id800 what do you think?",
 "@id323,id121 thx!"]
 ))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 """
