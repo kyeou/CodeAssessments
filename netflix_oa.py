@@ -92,7 +92,7 @@ Example:
 For elements = [1, 4, 2, 3] the output should be solution(elements) = -1 
 Let's consider all possible cyclic t-shifts: 
 0 - shift: moving 0 elements from the beginning to the end we get
-[1, 4 ,2 ,3]
+[1, 4, 2 ,3]
 1 - shift: moving 1 elements from the beginning to the end we get
 [4, 2, 3, 1]
 2 - shift: moving 2 elements from the beginning to the end we get
@@ -111,13 +111,9 @@ def sol3(numbers):
     
     h1, h2 = numbers[0:numbers.index(min(numbers))], numbers[numbers.index(min(numbers)):]
 
-    if h1 is None:
-        if sorted(h2) != h2:
-            return -1
-    elif h2 is None:
-        if sorted(h1) != h1:
-            return -1
-        
+    if h1 is None or h2 is None:
+        if sorted(h2) != h2 or sorted(h1) != h1:
+            return -1        
         
     if sorted(h2) == h2 and sorted(h1) == h1:
         return numbers.index(min(numbers))
