@@ -16,13 +16,13 @@ print(sol1("abcdefg"))
 
 
 
-#
+# Take a arrival time and a schedule and figure out how long you have to wait till the next aval time in the schedule
 
-def sol2(schedule, curr_time): # ["12:30", "14:00", "19:55"]
+def sol2(schedule, arrival): # ["12:30", "14:00", "19:55"]
     ns = [int(x.replace(":", "")) for x in schedule]
     for n in ns:
-        if int(curr_time.replace(":", "")) < n:
-            ret = str(n - int(curr_time.replace(":", "")))
+        if int(arrival.replace(":", "")) < n:
+            ret = str(n - int(arrival.replace(":", "")))
             ret = f"{ret[0:len(str(ret))-2]}:{ret[len(ret)-2:]}"
             if len(ret) == 4:
                 ret = f"0{ret}"
@@ -32,6 +32,13 @@ def sol2(schedule, curr_time): # ["12:30", "14:00", "19:55"]
 print(sol2(["12:30", "14:00", "19:55"], "14:30"))
 
 
+# Take an array of nums and determine how many pairs of numbers that exist that are shifts of each other
+# [13, 5604, 31, 2, 13, 4560, 546, 654, 456]
+# 13 - 31
+# 13 - 13
+# 31 - 13
+# 5604 - 4560
+# 546 - 654
 
 def sol3(nums):
     class Node:
