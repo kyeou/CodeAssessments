@@ -1,3 +1,8 @@
+
+# Take a string, and swap every pair of characters. If odd number of characters, leave end alone
+# ab => ba
+# abc => bac
+
 def sol1(str):
     str = [*str]
     for i in range(0, len(str)-1, 2):
@@ -7,6 +12,11 @@ def sol1(str):
 
 print(sol1("abcdefg"))
 
+
+
+
+
+#
 
 def sol2(schedule, curr_time): # ["12:30", "14:00", "19:55"]
     ns = [int(x.replace(":", "")) for x in schedule]
@@ -20,10 +30,6 @@ def sol2(schedule, curr_time): # ["12:30", "14:00", "19:55"]
     return -1
 
 print(sol2(["12:30", "14:00", "19:55"], "14:30"))
-
-
-
-
 
 
 
