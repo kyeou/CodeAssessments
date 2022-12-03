@@ -63,7 +63,7 @@ def sol2(members, messages):
             except KeyError:
                 continue
     
-    stats_dict = dict(sorted(stats_dict.items(), key=lambda x:x[1]))
+    stats_dict = dict(sorted(stats_dict.items(), key=lambda x:x[1], reverse=True))
     
     # For every unique value in the stats_dict, sort every key that has that value by name, and then proceed 
     org_dict = {}
@@ -133,12 +133,6 @@ def sol3(numbers):
     # Split the array at the min, with the min being grouped with the elements suceeding it
     h1, h2 = numbers[0:numbers.index(min(numbers))], numbers[numbers.index(min(numbers)):]
 
-    
-    # if one of the arrays is empty, that means the min was at the beginning
-    # if everything after the min is not sorted, there is no shift possible
-    if h1 is None or h2 is None:
-        if sorted(h2) != h2 or sorted(h1) != h1:
-            return -1        
     
     
     # if the half's are sorted in increasing order, that means a shift on a sorted array occured

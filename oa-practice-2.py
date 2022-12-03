@@ -118,7 +118,7 @@ def sol3_but_smarter(nums):
 
     circs = [big(z) for z in nums] # do that to all of the numbers in nums
     c = Counter(circs) # count how many times a number shows up
-    print(c)
+    # print(c)
     
     pairs = 0
     for i in c:
