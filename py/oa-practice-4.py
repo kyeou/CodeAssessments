@@ -17,21 +17,20 @@
 # Given two string, s and t, where t is a subsequence of s, report the words of s that are missing in t in the order they are missing. 
 def sol3(s, t):
     ret = []
-    a, b = s.split(" "), t.split(" ")
-    ac, bc = 0, 0
-    while True:
-        try:
-            if a[ac] != b[bc]:
-                ret.append(a[ac])
-                ac += 1
-            else:
-                ac += 1
-                bc += 1
-        except IndexError:
-            while ac < len(a):
-                ret.append(a[ac])
-                ac += 1
-            break
+    a, b, ac, bc = s.split(" "), t.split(" "), 0, 0
+    while bc < len(b):
+        if a[ac] != b[bc]:
+            ret.append(a[ac])
+            ac += 1
+        else:
+            ac += 1
+            bc += 1
+
+
+    while ac < len(a):
+        ret.append(a[ac])
+        ac += 1
+
     return ret
                 
                 
@@ -42,13 +41,18 @@ def sol3(s, t):
 
 def sol4(pangram):
     ret = []
-    for p in pangram:
+    for p in [x.replace(" ", "") for x in pangram]:
         l = 'a'
-        while l != '{':
-            if l not in p:
+        while l != 'z':
+            if not p.__contains__(l):
                 ret.append('0')
                 break
             l = chr(ord(l) + 1)
-        if l == '{':
+        else:
             ret.append('1')
     return ''.join(ret)
+
+
+
+print(sol3("Here is a string", "is string"))
+print(sol4(["abcdefghijklmnopqrstuvwxyz", "the quick brown fox jumps over the lazy dog", "i just want a f***in job"]))
