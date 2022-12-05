@@ -105,8 +105,8 @@ print(sol2(["id123", "id234", "id7", "id321"], ["Hey @id123,id321 review this PR
 For example, applying cyclic t-shift to a = [ 1, 2, 3, 4] can turn it into four different arrays:
 [1, 2, 3, 4] (0-shift)
 [2, 3, 4, 1] (1-shift, one element from the beginning was carried to the end)
-[3, 4, 2, 1] (2-shift two elements were carried to the end)
-[4, 3, 2, 1] (3-shift 1, 2, 3 were carried to the end)
+[3, 4, 1, 2] (2-shift two elements were carried to the end)
+[4, 1, 2, 3] (3-shift 1, 2, 3 were carried to the end)
 Given an array of integers elements find such t (0 <= t < elements.length) that cyclic t-shift operations turns elements into a sorted array [1, 2, . . . , elements.length]. If there is no such t. return -1. 
 Example: 
 For elements = [1, 4, 2, 3] the output should be solution(elements) = -1 

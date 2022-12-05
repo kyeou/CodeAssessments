@@ -2,7 +2,6 @@
 #include <map>
 #include <vector>
 #include <string>
-
 #include <sstream>
 #include <algorithm>
 #include <set>
@@ -109,8 +108,8 @@ string sol2(vector<string> members, vector<string> messages)
 For example, applying cyclic t-shift to a = [ 1, 2, 3, 4] can turn it into four different arrays:
 [1, 2, 3, 4] (0-shift)
 [2, 3, 4, 1] (1-shift, one element from the beginning was carried to the end)
-[3, 4, 2, 1] (2-shift two elements were carried to the end)
-[4, 3, 2, 1] (3-shift 1, 2, 3 were carried to the end)
+[3, 4, 1, 2] (2-shift two elements were carried to the end)
+[4, 1, 2, 3] (3-shift 1, 2, 3 were carried to the end)
 Given an array of integers elements find such t (0 <= t < elements.length) that cyclic t-shift operations turns elements into a sorted array [1, 2, . . . , elements.length]. If there is no such t. return -1.
 Example:
 For elements = [1, 4, 2, 3] the output should be solution(elements) = -1
@@ -134,14 +133,27 @@ If we move the first 3 elements of the given array to the beginning to the end, 
 int sol3(vector<int> nums)
 {
     int min = *min_element(nums.begin(), nums.end());
-    auto index_of_min = *(nums.begin()) - *find(nums.begin(), nums.end(), min) + 1;
-    vector<int> h1(nums.begin(), nums.end() - index_of_min + 1);
-    vector<int> h2(nums.begin() + index_of_min, nums.end());
+    auto index_of_min = *(nums.begin()) - *find(nums.begin(), nums.end(), min) + 1; // +1 because without it it would be element right before the min
+    vector<int> h1(nums.begin(), nums.end() - index_of_min + 1);                    // +1 is the element it stops at (1) but doesnt consider
+    vector<int> h2(nums.begin() + index_of_min, nums.end());                        // +index_of_min is the actual position of the min
 
-    if (is_sorted(h1.begin(), h1.end()) && is_sorted(h2.begin(), h2.end())) {
-            return index_of_min;
-        }
-        return -1;
+    for (auto &a : h1)
+    {
+        cout << a << " ";
+    }
+    cout << endl;
+
+    for (auto &a : h2)
+    {
+        cout << a << " ";
+    }
+    cout << endl;
+
+    if (is_sorted(h1.begin(), h1.end()) && is_sorted(h2.begin(), h2.end()))
+    {
+        return index_of_min;
+    }
+    return -1;
 }
 
 int main()
