@@ -1,10 +1,4 @@
-#include <iostream>
-#include <map>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <algorithm>
-#include <set>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -141,13 +135,13 @@ int sol3(vector<int> nums)
     {
         cout << a << " ";
     }
-    cout << endl;
+    cout << '\n';
 
     for (auto &a : h2)
     {
         cout << a << " ";
     }
-    cout << endl;
+    cout << '\n';
 
     if (is_sorted(h1.begin(), h1.end()) && is_sorted(h2.begin(), h2.end()))
     {

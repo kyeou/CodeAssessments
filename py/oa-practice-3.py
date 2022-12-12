@@ -4,6 +4,9 @@
 # if multiple substrings exists, print th lexigraphically smallest one
 def sol1(inputStr):
     
+    if inputStr == "":
+        return ""
+    
     # I dont think this always returns the lexigraphically smallest one
     if inputStr == inputStr[::-1]:
         return inputStr

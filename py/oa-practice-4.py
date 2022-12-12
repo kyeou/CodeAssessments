@@ -4,6 +4,9 @@
 # Given an integer array of nums representing the amount of candy held by each house, return the maximum amount of canady you can gain 
 # while not visiting adjacent houses at any point
 
+def sol2(nums):
+    return 
+
 
 # Type A: $1000 for 3000 users 
 # Type B: $500 for 2000 users
@@ -15,7 +18,7 @@
 
 
 # Given two string, s and t, where t is a subsequence of s, report the words of s that are missing in t in the order they are missing. 
-def sol3(s, t):
+def sol4(s, t):
     ret = []
     a, b, ac, bc = s.split(" "), t.split(" "), 0, 0
     while bc < len(b):
@@ -39,7 +42,7 @@ def sol3(s, t):
 # Returns a string consisting of 0's and 1's being False and True for each string 
 # 0001 means that in a list of 4 strings, only the last one contained all 26 letters of the alphabet
 
-def sol4(pangram):
+def sol5(pangram):
     ret = []
     for p in [x.replace(" ", "") for x in pangram]:
         l = 'a'
@@ -54,5 +57,5 @@ def sol4(pangram):
 
 
 
-print(sol3("Here is a string", "is string"))
-print(sol4(["abcdefghijklmnopqrstuvwxyz", "the quick brown fox jumps over the lazy dog", "i just want a f***in job"]))
+print(sol4("Here is a string", "is string"))
+print(sol5(["abcdefghijklmnopqrstuvwxyz", "the quick brown fox jumps over the lazy dog", "i just want a f***in job"]))
