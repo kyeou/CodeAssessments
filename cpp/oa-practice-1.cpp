@@ -131,17 +131,17 @@ int sol3(vector<int> nums)
     vector<int> h1(nums.begin(), nums.end() - index_of_min + 1);                    // +1 is the element it stops at (1) but doesnt consider
     vector<int> h2(nums.begin() + index_of_min, nums.end());                        // +index_of_min is the actual position of the min
 
-    for (auto &a : h1)
-    {
-        cout << a << " ";
-    }
-    cout << '\n';
+    //for (auto &a : h1)
+    //{
+    //    cout << a << " ";
+    //}
+    //cout << '\n';
 
-    for (auto &a : h2)
-    {
-        cout << a << " ";
-    }
-    cout << '\n';
+    //for (auto &a : h2)
+    //{
+    //    cout << a << " ";
+    //}
+    //cout << '\n';
 
     if (is_sorted(h1.begin(), h1.end()) && is_sorted(h2.begin(), h2.end()))
     {

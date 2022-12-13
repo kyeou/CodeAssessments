@@ -2,13 +2,16 @@
 
 using namespace std;
 
-int call_count = 0;
-int call_c = 0;
+
+// Take a string and truncate the start, end, or both until it is a palindrome.
+// If no such string exists return -1 or None
+// Print the largest possible substring
+// if multiple substrings exists, print th lexigraphically smallest one
 
 string sol1(string _a)
 {
 
-    call_count++;
+   
     string _b = string(_a.rbegin(), _a.rend());
 
     if (_a == _b)
@@ -22,8 +25,10 @@ string sol1(string _a)
     }
 }
 
-map<string, bool> dp;
 
+
+
+map<string, bool> dp;
 string sol1_dp(string _a)
 {
 
@@ -57,6 +62,9 @@ string sol1_dp(string _a)
         }
     }
 }
+
+// Take a matrix, and find the number that is largest in its column and smallest in its row.
+// If none found, return -1
 
 int sol2(vector<vector<int>> matrix)
 {

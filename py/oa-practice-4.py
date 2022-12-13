@@ -1,5 +1,8 @@
 # Given an array of nums calculate the minimum number of move-to-back required to sort an array of numbers in increasing order. set(l) = list l
 
+def sol1():
+    return
+
 # Given an integer array of nums representing the amount of candy held by each house, return the maximum amount of canady you can gain
 # while not visiting adjacent houses at any point
 
@@ -18,19 +21,20 @@ def sol2(nums):
 
 def p2(n, max, prefix, ad_types, possible_packages):
     if n == 0:
-        possible_packages[tuple(prefix.split(" ")[1:])] = 0
+        possible_packages[prefix] = 0
+        # ashprint(prefix)
         return
 
     for i in range(min(max, n), 0, -min(ad_types)):
         if i in ad_types:
-            p2(n - i, i, prefix + " " + str(i), ad_types, possible_packages)
+            p2(n - i, i, prefix + (i, ), ad_types, possible_packages)
 
 
 
 
 def sol3(ad_types, N):
     possible_packages = {}
-    p2(N, N, "", list(ad_types.keys()), possible_packages)
+    p2(N, N, (), list(ad_types.keys()), possible_packages)
 
     for key in possible_packages:
         for amt in key:

@@ -2,6 +2,11 @@
 
 using namespace std;
 
+// Take a string, and swap every pair of characters. If odd number of characters, leave end alone
+// ab => ba
+// abc => bac
+
+
 string sol1(string s)
 {
     for (int i = 0; i < s.length() - 1; i += 2)
@@ -10,6 +15,8 @@ string sol1(string s)
     }
     return s;
 }
+
+// Take a arrival time and a schedule and figure out how long you have to wait till the next aval time in the schedule
 
 string sol2(vector<string> s, string ar)
 {
@@ -36,6 +43,15 @@ string sol2(vector<string> s, string ar)
     }
     return "";
 }
+
+// Take an array of nums and determine how many pairs of numbers that exist that are shifts of each other
+// [13, 5604, 31, 2, 13, 4560, 546, 654, 456]
+// 13 - 31
+// 13 - 13
+// 31 - 13
+// 5604 - 4560
+// 546 - 654
+
 
 int sol3(vector<int> nums)
 {
