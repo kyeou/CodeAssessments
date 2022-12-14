@@ -27,7 +27,7 @@ string sol1(string _a)
 
 
 
-// since some substrings will be calculated once, a dp version might be more suitable
+// since some substrings will be calculated more than once, a dp version might be more suitable
 map<string, bool> dp;
 string sol1_dp(string _a)
 {
