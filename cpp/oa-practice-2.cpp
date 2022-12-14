@@ -55,6 +55,7 @@ string sol2(vector<string> s, string ar)
 
 int sol3(vector<int> nums)
 {
+    // rotate the number till its the biggest possible number
     auto big = [](int num)
     {
         int max = num;
@@ -72,11 +73,12 @@ int sol3(vector<int> nums)
     set<int> no_dups_nums;
     for (int a : nums)
     {
-        no_dups_nums.insert(big(a));
+        no_dups_nums.insert(big(a)); // create a set of all the rotated numbers
     }
    
 
-    return nums.size() - no_dups_nums.size() + 1;
+    return nums.size() - no_dups_nums.size() + 1; 
+    // taking the original amount of nums and subtract the length of set and add 1 will return the pairs
 }
 
 int main()

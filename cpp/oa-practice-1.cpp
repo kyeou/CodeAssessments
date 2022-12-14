@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 /*
@@ -56,37 +55,39 @@ string sol2(vector<string> members, vector<string> messages)
     {
         stringstream A(m);
         string ap;
-        set<string> s;
-        while (getline(A, ap, ' '))
+        set<string> s; // using a set because a member can only add one mention per message
+        while (getline(A, ap, ' ')) // going through every word of the split
         {
 
-            if (ap[0] == '@')
+            if (ap[0] == '@') // if it begins with @
             {
-                stringstream C(ap.substr(1));
+                stringstream C(ap.substr(1)); 
                 string cp;
-                while (getline(C, cp, ','))
+                while (getline(C, cp, ',')) // split the word by the commas
                 {
-                    s.insert(cp);
+                    s.insert(cp); // insert every member
                     // stats[cp] += 1;
                 }
             }
         }
         for (auto &a : s)
         {
-            stats[a] += 1;
+            stats[a] += 1; // for every memeber mentioned in the message, add one to their count
         }
     }
 
-    map<int, vector<string>> stats_rev;
+    map<int, vector<string>> stats_rev; 
 
-    for (auto &a : members)
+    for (auto &a : members) // only the members we care about
     {
-        stats_rev[stats[a]].push_back(a);
+        stats_rev[stats[a]].push_back(a); // group the members by their mention count
     }
     ostringstream os;
-    for (auto a = stats_rev.rbegin(); a != stats_rev.rend(); a++)
+
+    // iterator starts from highest key value, so start from the back 
+    for (auto a = stats_rev.rbegin(); a != stats_rev.rend(); a++) 
     {
-        sort(a->second.begin(), a->second.end());
+        sort(a->second.begin(), a->second.end()); // sort the members first
         for (auto &b : a->second)
         {
             os << "[" << b << "] - [" << stats[b] << "], ";
@@ -143,6 +144,8 @@ int sol3(vector<int> nums)
     //}
     //cout << '\n';
 
+
+    // if both halfs are sorted that then shift is the distance of index of the min from the beginning
     if (is_sorted(h1.begin(), h1.end()) && is_sorted(h2.begin(), h2.end()))
     {
         return index_of_min;

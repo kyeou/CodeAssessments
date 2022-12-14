@@ -14,12 +14,12 @@ string sol1(string _a)
    
     string _b = string(_a.rbegin(), _a.rend());
 
-    if (_a == _b)
+    if (_a == _b) // if param is already substring, return it
     {
         return _a;
     }
-    else
-    {
+    else // if not, call the function on a truncation of the string from both the left and right
+    {   
         return max({sol1(_a.substr(1)), sol1(_a.substr(0, _a.length() - 1))}, [](string s1, string s2)
                    { return s1.length() < s2.length(); });
     }
@@ -27,7 +27,7 @@ string sol1(string _a)
 
 
 
-
+// since some substrings will be calculated once, a dp version might be more suitable
 map<string, bool> dp;
 string sol1_dp(string _a)
 {
@@ -63,12 +63,14 @@ string sol1_dp(string _a)
     }
 }
 
-// Take a matrix, and find the number that is largest in its column and smallest in its row.
+// The reverse version of the Python one.
+// Take a matrix, and find the number that is SMALLESST in its column and LARGEST in its row.
 // If none found, return -1
 
 int sol2(vector<vector<int>> matrix)
 {
-    auto col = [](vector<vector<int>> matrix, int axis)
+    // given a column position, go through all the rows and save that column in a vector
+    auto col = [](vector<vector<int>> matrix, int axis) 
     {
         vector<int> ret;
         for (int i = 0; i < matrix.size(); i++)
@@ -82,7 +84,7 @@ int sol2(vector<vector<int>> matrix)
     for (int i = 0; i < matrix[0].size(); i++)
     {
         vector<int> temp = col(matrix, i);
-        min_cols.push_back(*max_element(temp.begin(), temp.end()));
+        min_cols.push_back(*min_element(temp.begin(), temp.end())); // finds min value for every column
     }
     sort(min_cols.begin(), min_cols.end());
     // for (auto &a : min_cols)
@@ -94,8 +96,7 @@ int sol2(vector<vector<int>> matrix)
     vector<int> max_rows;
     for (int i = 0; i < matrix.size(); i++)
     {
-
-        max_rows.push_back(*max_element(matrix[i].begin(), matrix[i].end()));
+        max_rows.push_back(*max_element(matrix[i].begin(), matrix[i].end())); // finds max for every row
     }
 
     vector<int> ret;
@@ -106,15 +107,17 @@ int sol2(vector<vector<int>> matrix)
     //     cout << a << " ";
     // }
     // cout << '\n';
+    
+    // find the intersection of the respective mins and maxs, should only be one result
     std::set_intersection(min_cols.begin(), min_cols.end(),
                           max_rows.begin(), max_rows.end(),
-                          back_inserter(ret));
+                          back_inserter(ret)); 
     // for (auto a : ret)
     // {
     //     cout << a << " ";
     // }
     // cout << '\n';
-    return *ret.begin();
+    return *ret.begin(); // return the intersection
 }
 
 int main()
@@ -123,11 +126,11 @@ int main()
     cout << sol1("abbaecccccc") << '\n';                                                  // cccccc
     cout << sol1_dp("YABCCBAZ") << '\n';                                                  // ABCCBA
     cout << sol1_dp("abbaecccccc") << '\n';                                               // cccccc
-    cout << sol2({{1, 2}, {3, 4}}) << '\n';                                               // 4
-    cout << sol2({{14, 3, 6, 4}, {15, 7, 5, 8}, {20, 11, 12, 10}, {9, 2, 3, 1}}) << '\n'; // 20
-    for (auto &a : dp)
-    {
-        cout << a.first << " " << a.second << '\n';
-    }
+    cout << sol2({{1, 2}, {3, 4}}) << '\n';                                               // 2
+    cout << sol2({{14, 3, 6, 4}, {15, 7, 5, 8}, {20, 11, 12, 10}, {9, 2, 3, 1}}) << '\n'; // 9
+    // for (auto &a : dp)
+    // {
+    //     cout << a.first << " " << a.second << '\n';
+    // }
     // cout << "DP SIZE " << dp.size() << '\n';
 }

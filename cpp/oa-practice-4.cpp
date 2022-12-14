@@ -22,43 +22,46 @@ int sol2(vector<int> nums) {}
 
 int sol3(map<int, int> ad_types, int N)
 {
-    map<vector<int>, int> possible_packages;
-    vector<int> prefix;
-    vector<int> ad_list;
 
+    map<vector<int>, int> possible_packages; // all possible partitions that add up to N
+    vector<int> prefix; // the list of numbers that make the set possible_packages
+    vector<int> ad_list; // the costs of all the types
+    
+    // capture possible_packages and prefix for sub-scope access
+    // recursive lambda to find all partitions
     auto partition = [&possible_packages, &prefix](auto &&partition, int n, int max, vector<int> ad_types_list)
     {
-        if (n == 0)
+        if (n == 0) // if n is 0, that means all the nums currently in prefix add up to N
         {
-            possible_packages[prefix] = 0;
-            prefix = {};
+            possible_packages[prefix] = 0; // save that prefix
+            prefix = {}; // reset temp prefix
             return;
         }
 
         for (int i = min(max, n); i >= 1; i -= *min_element(ad_types_list.begin(), ad_types_list.end()))
         {
-            if (std::count(ad_types_list.begin(), ad_types_list.end(), i))
+            if (std::count(ad_types_list.begin(), ad_types_list.end(), i)) // only consider adding to the prefix if the i is one of the costs
             {
                 prefix.push_back(i);
-                partition(partition, n - i, i, ad_types_list);
+                partition(partition, n - i, i, ad_types_list); // call the lamdba again subtracting the i from whats left 
             }
         }
     };
-    for (auto &a : ad_types)
+    for (auto &a : ad_types) 
     {
-        ad_list.push_back(a.first);
+        ad_list.push_back(a.first); // record all the costs of the ad_types
     }
-    partition(partition, N, N, ad_list);
+    partition(partition, N, N, ad_list); // start partitioning
 
-    for (auto &a : possible_packages)
+    for (auto &a : possible_packages) // for every partition
     {
-        for (auto &b : a.first)
+        for (auto &b : a.first) // for every number in the partition
         {
-            possible_packages[a.first] += ad_types[b];
+            possible_packages[a.first] += ad_types[b]; // add the amount of users to the value for the current partition
         }
     }
     int max = 0;
-
+    // go through all the values and return the max
     for (auto &a : possible_packages)
     {
         if (a.second > max)
@@ -71,7 +74,7 @@ int sol3(map<int, int> ad_types, int N)
 // Returns a string consisting of 0's and 1's being False and True for each string
 // 0001 means that in a list of 4 strings, only the last one contained all 26 letters of the alphabet
 
-char* sol5(vector<string> words) {}
+string sol4(vector<string> words) {}
 
 
 
