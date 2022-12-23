@@ -29,7 +29,7 @@ members = [“id123”, “id234”, “id7”, “id321”]
 messages = [“Hey @id123,id321 review this PR please! @id123 what do you think about this approach?”, 
 “Hey @id7 nice approach! Great job! @id800 what do you think?”, “@id323,id121 thx!”]
 
-solved(members, messages) =
+solution(members, messages) =
 ["[id123] - [1]", "[id321] - [1]", "[id7] - [1]", "[id234] - [0]"]
 ```
 
@@ -74,7 +74,7 @@ we get a sorted array: [1, 2, 3, 4, 5], so the answer is 3
 [5, 1, 2, 3, 4] 2-Shift
 [1, 2, 3, 4, 5] 3-Shift
 
-solved(elements) = 3
+solution(elements) = 3
 ```
 
 
@@ -84,8 +84,8 @@ solved(elements) = 3
 Take a string, and swap every pair of characters. If odd number of characters, leave end alone
 ```
 Example:
-solved(ab) = ba
-solved(abc) = bac
+solution(ab) = ba
+solution(abc) = bac
 ```
 
 ### Question 2 `(PY: SOLVED, CPP: SOLVED)`
@@ -94,7 +94,7 @@ Take a arrival time and a schedule and figure out how long you have to wait till
 Example:
 schedule = ["12:30", "14:00", "19:55"]
 arrrival = "14:30"
-solved(schedule, arrival) = "05:25"
+solution(schedule, arrival) = "05:25"
 ```
 
 ### Question 3 `(PY: SOLVED, CPP: SOLVED)`
@@ -108,7 +108,7 @@ nums = [13, 5604, 31, 2, 13, 4560, 546, 654, 456]
 5604 - 4560
 546 - 654
 
-solved(nums) = 5
+solution(nums) = 5
 ```
 ## OA-Practice-3
 
@@ -118,8 +118,8 @@ If no such string exists return -1 or None
 Print the largest possible substring
 if multiple substrings exists, print the lexigraphically smallest one
 ```
-solved("YABCCBAZ") = "ABCCBA"
-solved("abbaecccccc") =  "cccccc"
+solution("YABCCBAZ") = "ABCCBA"
+solution("abbaecccccc") =  "cccccc"
 ```
 
 ### Question 2 `(PY: SOLVED, CPP: SOLVED)`
@@ -127,9 +127,9 @@ Take a matrix, and find the number that is largest in its column and smallest in
 If none found, return -1
 ```
 Exmaple:
-solved([[1, 2], [3, 4]]) = 3
+solution([[1, 2], [3, 4]]) = 3
 
-solved([[14, 3, 6, 4], [15, 7, 5, 8], [20, 11, 12, 10], [9, 2, 3, 1]]) = 10
+solution([[14, 3, 6, 4], [15, 7, 5, 8], [20, 11, 12, 10], [9, 2, 3, 1]]) = 10
 
 ```
 
@@ -155,7 +155,7 @@ Type E: 50 USD for 200 users
 
 Exmaple:
 ad_types = {1000: 3000, 500: 2000, 200: 1000, 100: 800, 50: 200} 
-solved(ad_types, 800) = 6400
+solution(ad_types, 800) = 6400
 ```
 
 
@@ -164,7 +164,7 @@ Given two string, s and t, where t is a subsequence of s, report the words of s 
 ```
 Example:
 s = "Here is a string"
-solved(s, t)) = ['Here', 'a']
+solution(s, t)) = ['Here', 'a']
 ```
 
 ### Question 5 `(PY: SOLVED, CPP: UNSOLVED)`
@@ -174,7 +174,7 @@ Returns a string consisting of 0's and 1's being False and True for each string
 
 ```
 Example:
-solved([
+solution([
         "abcdefghijklmnopqrstuvwxyz",
         "the quick brown fox jumps over the lazy dog",
         "i just want a f***in job"
