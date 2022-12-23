@@ -70,11 +70,15 @@ int sol3(map<int, int> ad_types, int N)
     return max;
 }
 
+
+//Given two string, s and t, where t is a subsequence of s, report the words of s that are missing in t in the order they are missing.
+vector<string> sol4(string s, string t) {}
+
 // Given a list of strings, determine if all the strings contain all the letters of alphabet (only lowercase)
 // Returns a string consisting of 0's and 1's being False and True for each string
 // 0001 means that in a list of 4 strings, only the last one contained all 26 letters of the alphabet
 
-string sol4(vector<string> words) {}
+string sol5(vector<string> words) {}
 
 
 

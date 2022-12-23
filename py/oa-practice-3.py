@@ -1,7 +1,7 @@
-# Take a string and truncate the start, end, or both until it is a palindrome.
-# If no such string exists return -1 or None
-# Print the largest possible substring
-# if multiple substrings exists, print th lexigraphically smallest one
+"""Take a string and truncate the start, end, or both until it is a palindrome.
+If no such string exists return -1 or None
+Print the largest possible substring
+if multiple substrings exists, print th lexigraphically smallest one"""
 def sol1(inputStr):
     
     if inputStr == "":
@@ -38,8 +38,8 @@ def sol1(inputStr):
 import numpy as np
 
 
-# Take a matrix, and find the number that is largest in its column and smallest in its row.
-# If none found, return -1
+"""Take a matrix, and find the number that is largest in its column and smallest in its row.
+If none found, return -1"""
 def sol2(matrix):
     
     a = np.array(matrix)

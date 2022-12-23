@@ -1,8 +1,8 @@
 
-# Take a string, and swap every pair of characters. If odd number of characters, leave end alone
-# ab => ba
-# abc => bac
-
+"""Take a string, and swap every pair of characters. If odd number of characters, leave end alone
+ab => ba
+abc => bac
+"""
 def sol1(str):
     str = [*str]
     for i in range(0, len(str)-1, 2):
