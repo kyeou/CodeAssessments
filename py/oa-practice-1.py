@@ -63,7 +63,7 @@ messages = [“Hey @id123,id321 review this PR please! @id123 what do you think 
 
 
 def sol2(members, messages):
-    ret,stats_dict = "", {}
+    ret, stats_dict = "", {}
     for mem in members:
         stats_dict[mem] = 0
 
@@ -79,8 +79,7 @@ def sol2(members, messages):
             except KeyError:
                 continue
 
-    stats_dict = dict(
-        sorted(stats_dict.items(), key=lambda x: x[1], reverse=True))
+    stats_dict = dict(sorted(stats_dict.items(), key=lambda x: x[1], reverse=True))
 
     # For every unique value in the stats_dict, sort every key that has that value by name, and then proceed
     org_dict = {}

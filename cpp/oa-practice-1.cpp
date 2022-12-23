@@ -154,7 +154,7 @@ string sol2_regex(vector<string> members, vector<string> messages)
     }
     ostringstream os;
 
-    // iterator starts from highest key value, so start from the back
+    // iterator starts from lowest key value, so start from the back
     for (auto _a = stats_rev.rbegin(); _a != stats_rev.rend(); _a++)
     {
         sort(_a->second.begin(), _a->second.end()); // sort the members first
