@@ -118,6 +118,7 @@ If no such string exists return -1 or None
 Print the largest possible substring
 if multiple substrings exists, print the lexigraphically smallest one
 ```
+Example:
 solution("YABCCBAZ") = "ABCCBA"
 solution("abbaecccccc") =  "cccccc"
 ```
