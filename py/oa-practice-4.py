@@ -1,4 +1,4 @@
-# Given an array of nums calculate the minimum number of move-to-back required to sort an array of numbers in increasing order. set(l) = list l
+# Given an array of nums calculate the minimum number of move-to-back required to sort an array of numbers in increasing order.
 
 def sol1():
     return
@@ -39,7 +39,7 @@ def sol3(ad_types, N):
     for key in possible_packages:
         for amt in key:
             possible_packages[key] += ad_types[int(amt)]
-    print(max(list(possible_packages.values())))
+    return max(list(possible_packages.values()))
 
 
 # Given two string, s and t, where t is a subsequence of s, report the words of s that are missing in t in the order they are missing.
