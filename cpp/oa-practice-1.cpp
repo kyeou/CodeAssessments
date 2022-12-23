@@ -55,13 +55,13 @@ string sol2(vector<string> members, vector<string> messages)
     {
         stringstream A(m);
         string ap;
-        set<string> s; // using a set because a member can only add one mention per message
+        set<string> s;              // using a set because a member can only add one mention per message
         while (getline(A, ap, ' ')) // going through every word of the split
         {
 
             if (ap[0] == '@') // if it begins with @
             {
-                stringstream C(ap.substr(1)); 
+                stringstream C(ap.substr(1));
                 string cp;
                 while (getline(C, cp, ',')) // split the word by the commas
                 {
@@ -76,7 +76,7 @@ string sol2(vector<string> members, vector<string> messages)
         }
     }
 
-    map<int, vector<string>> stats_rev; 
+    map<int, vector<string>> stats_rev;
 
     for (auto &a : members) // only the members we care about
     {
@@ -84,13 +84,83 @@ string sol2(vector<string> members, vector<string> messages)
     }
     ostringstream os;
 
-    // iterator starts from highest key value, so start from the back 
-    for (auto a = stats_rev.rbegin(); a != stats_rev.rend(); a++) 
+    // iterator starts from highest key value, so start from the back
+    for (auto a = stats_rev.rbegin(); a != stats_rev.rend(); a++)
     {
         sort(a->second.begin(), a->second.end()); // sort the members first
         for (auto &b : a->second)
         {
             os << "[" << b << "] - [" << stats[b] << "], ";
+        }
+    }
+
+    return os.str();
+}
+
+string sol2_regex(vector<string> members, vector<string> messages)
+{
+    map<string, int> stats;
+    for (auto &_a : members)
+    {
+        stats[_a] = 0;
+    }
+    for (auto &_a : messages)
+    {
+        regex regexp("@+[a-z0-9,]*");
+
+        auto words_begin = sregex_iterator(_a.begin(), _a.end(), regexp);
+        auto words_end = sregex_iterator();
+
+        // cout << "Found "
+        //      << distance(words_begin, words_end)
+        //      << " words\n";
+        set<string> mens;
+        for (sregex_iterator _i = words_begin; _i != words_end; ++_i)
+        {
+            string match_str = (*_i).str();
+
+            // cout << "  " << match_str << '\n';
+
+            // cout << '\n' << match_str << '\n';
+
+            // regex regexp("id[0-9]*");
+            // smatch m;
+            // regex_search(match_str, m, regexp);
+
+            regex _r("id[0-9]*");
+
+            auto _b = sregex_iterator(match_str.begin(), match_str.end(), _r);
+            auto _e = sregex_iterator();
+
+            for (sregex_iterator _j = _b; _j != _e; ++_j)
+            {
+                // cout << x << '\n';
+                mens.insert((*_j).str());
+            }
+
+            
+        }
+        for (auto &_a : mens) {
+                // cout << a << '\n';
+                stats[_a] += 1;
+            }
+    }
+
+    map<int, vector<string>> stats_rev;
+
+    for (auto &_a : members) // only the members we care about
+    {
+        stats_rev[stats[_a]].push_back(_a); // group the members by their mention count
+    }
+    ostringstream os;
+
+    // iterator starts from highest key value, so start from the back
+    for (auto _a = stats_rev.rbegin(); _a != stats_rev.rend(); _a++)
+    {
+        sort(_a->second.begin(), _a->second.end()); // sort the members first
+        for (auto &_b : _a->second)
+        {
+            os << "[" << _b << "] - [" << stats[_b] << "], ";
         }
     }
 
@@ -132,18 +202,17 @@ int sol3(vector<int> nums)
     vector<int> h1(nums.begin(), nums.end() - index_of_min + 1);                    // +1 is the element it stops at (1) but doesnt consider
     vector<int> h2(nums.begin() + index_of_min, nums.end());                        // +index_of_min is the actual position of the min
 
-    //for (auto &a : h1)
+    // for (auto &a : h1)
     //{
-    //    cout << a << " ";
-    //}
-    //cout << '\n';
+    //     cout << a << " ";
+    // }
+    // cout << '\n';
 
-    //for (auto &a : h2)
+    // for (auto &a : h2)
     //{
-    //    cout << a << " ";
-    //}
-    //cout << '\n';
-
+    //     cout << a << " ";
+    // }
+    // cout << '\n';
 
     // if both halfs are sorted that then shift is the distance of index of the min from the beginning
     if (is_sorted(h1.begin(), h1.end()) && is_sorted(h2.begin(), h2.end()))
@@ -160,8 +229,9 @@ int main()
                                                       "Hey @id7 nice approach! Great job! @id800 what do you think?",
                                                       "@id323,id121 thx!"})
          << '\n';
+    cout << sol2_regex({"id123", "id234", "id7", "id321"}, {"Hey @id123,id321 review this PR please! @id123 what do you think about this approach?",
+                                                            "Hey @id7 nice approach! Great job! @id800 what do you think?",
+                                                            "@id323,id121 thx!"})
+         << '\n';
     cout << sol3({3, 4, 5, 1, 2}) << '\n';
-
-
-
 }
